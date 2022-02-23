@@ -2,7 +2,7 @@
   <div class="col">
         <img :src="personaggio.image">
         <h3>{{personaggio.name}}</h3>
-        
+        <div class="linea"></div>
         <h5>{{personaggio.origin}}</h5>
         <h6>{{personaggio.type}}</h6>
     </div>
@@ -28,6 +28,14 @@ export default {
             box-shadow: 0 0 3px 3px lightgray;
         }
 
+        .linea {
+            background: #000;
+            height: 1px;
+            width: 50px;
+            margin: 20px auto;
+
+        }
+
         h3 {
             margin-top: 20px;
             font-size: 20px;
@@ -36,7 +44,7 @@ export default {
 
         h5 {
             font-size: 16px;
-             font-weight: 300;
+            font-weight: 300;
         }
        
     }
