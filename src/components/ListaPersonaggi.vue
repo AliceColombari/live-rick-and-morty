@@ -2,12 +2,19 @@
   <div class="container">
       <div class="row">
 
-          <div class="col" v-for="(personaggio, indice) in listaPersonaggi" :key="indice">
+          <!-- <div class="col" v-for="(personaggio, indice) in listaPersonaggi" :key="indice">
               <img :src="personaggio.image">
               <h1>{{personaggio.name}}</h1>
               <h6>{{personaggio.origin}}</h6>
               <h6>{{personaggio.gender}}</h6>
-          </div>
+          </div> -->
+
+        <CardPersonaggio 
+        v-for="(personaggio, indice) in listaPersonaggi" 
+        :key="indice" 
+        :personaggio="personaggio"
+        />
+
       </div>
 
   </div>
@@ -17,6 +24,7 @@
 
 // integro axios nel mio progetto partendo dalla copia presente in node_modules
 const axios = require('axios');
+import CardPersonaggio from './partials/CardPersonaggio.vue';
 
 export default {
     name: "ListaPersonaggi",
@@ -27,6 +35,9 @@ export default {
             loadingInPorgress: true,
             endpoint: 'https://api.sampleapis.com/rickandmorty/characters' 
         }
+    },
+    components: {
+        CardPersonaggio 
     },
     methods: {
         // creo una funzione
