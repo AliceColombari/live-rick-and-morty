@@ -17,6 +17,8 @@
 
       </div>
 
+      <ConteggioPersonaggi :conteggio="listaPersonaggi.length"/>
+
   </div>
 </template>
 
@@ -25,6 +27,7 @@
 // integro axios nel mio progetto partendo dalla copia presente in node_modules
 const axios = require('axios');
 import CardPersonaggio from './partials/CardPersonaggio.vue';
+import ConteggioPersonaggi from './partials/ConteggioPersonaggi.vue';
 
 export default {
     name: "ListaPersonaggi",
@@ -37,7 +40,8 @@ export default {
         }
     },
     components: {
-        CardPersonaggio 
+        CardPersonaggio,
+        ConteggioPersonaggi
     },
     methods: {
         // creo una funzione
