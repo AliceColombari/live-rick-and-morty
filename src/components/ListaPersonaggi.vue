@@ -22,6 +22,8 @@
 
       <ConteggioPersonaggi :conteggio="listaPersonaggiFiltrati.length"/>
 
+      <LoadingInProgress v-if="loadingInPorgress"/>
+
   </div>
 </template>
 
@@ -33,6 +35,7 @@ import CardPersonaggio from './partials/CardPersonaggio.vue';
 import ConteggioPersonaggi from './partials/ConteggioPersonaggi.vue';
 
 import RicercaPersonaggio from './partials/RicercaPersonaggio.vue';
+import LoadingInProgress from './LoadingInProgress.vue';
 
 export default {
     name: "ListaPersonaggi",
@@ -48,7 +51,8 @@ export default {
     components: {
         CardPersonaggio,
         ConteggioPersonaggi,
-        RicercaPersonaggio
+        RicercaPersonaggio,
+        LoadingInProgress
     },
 
     computed: {
