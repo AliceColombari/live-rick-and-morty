@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+
+      <RicercaPersonaggio @ricerca="effettuaRicerca"/>
+
       <div class="row">
 
           <!-- <div class="col" v-for="(personaggio, indice) in listaPersonaggi" :key="indice">
@@ -29,6 +32,8 @@ const axios = require('axios');
 import CardPersonaggio from './partials/CardPersonaggio.vue';
 import ConteggioPersonaggi from './partials/ConteggioPersonaggi.vue';
 
+import RicercaPersonaggio from './partials/RicercaPersonaggio.vue';
+
 export default {
     name: "ListaPersonaggi",
     data() {
@@ -41,9 +46,16 @@ export default {
     },
     components: {
         CardPersonaggio,
-        ConteggioPersonaggi
+        ConteggioPersonaggi,
+        RicercaPersonaggio
     },
     methods: {
+
+        // effettua ricerca in input cliccanto ricerca
+        effettuaRicerca(testoRicercato) {
+            console.log('Il componente padre ha ricevuto: ' + testoRicercato);
+        },
+
         // creo una funzione
         getPersonaggi() {
             // richiesta axios al server remoto - inserisco url personaggi

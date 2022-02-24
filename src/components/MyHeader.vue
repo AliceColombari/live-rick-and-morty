@@ -18,7 +18,7 @@ export default {
   h1 {
     text-align: center;
     margin: 40px auto;
-    font-weight: bold;
+    font-weight: 700;
   }
 
 </style>
