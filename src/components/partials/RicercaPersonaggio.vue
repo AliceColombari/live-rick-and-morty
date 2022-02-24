@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-      <input type="text" placeholder="Search character" v-model="ricerca">
+      <input type="text" placeholder="Search character" v-model="ricerca" @keyup="faiRicerca">
       <button class="mx-3 ms-btn-blue" @click="faiRicerca">Ricerca</button>
       <button class="ms-btn-yellow">Azzera</button>
   </div>
