@@ -13,14 +13,14 @@
           </div> -->
 
         <CardPersonaggio 
-        v-for="(personaggio, indice) in listaPersonaggi" 
-        :key="indice" 
+        v-for="personaggio in listaPersonaggiFiltrati"
+        :key="personaggio.id" 
         :personaggio="personaggio"
         />
 
       </div>
 
-      <ConteggioPersonaggi :conteggio="listaPersonaggi.length"/>
+      <ConteggioPersonaggi :conteggio="listaPersonaggiFiltrati.length"/>
 
   </div>
 </template>
@@ -41,7 +41,8 @@ export default {
             // creo un oggetto di personaggi
             listaPersonaggi: [],
             loadingInPorgress: true,
-            endpoint: 'https://api.sampleapis.com/rickandmorty/characters' 
+            endpoint: 'https://api.sampleapis.com/rickandmorty/characters',
+            testoRicercato: ''
         }
     },
     components: {
@@ -49,11 +50,23 @@ export default {
         ConteggioPersonaggi,
         RicercaPersonaggio
     },
+
+    computed: {
+        // funzione che ritorna solo una parte delle info che noi vogliamo
+        listaPersonaggiFiltrati() {
+            console.log('Ho filtrato i personaggi');
+            return this.listaPersonaggi.filter(item => {
+                return item.name.toLowerCase().includes(this.testoRicercato.toLowerCase());
+            })
+        }
+    },
+
     methods: {
 
         // effettua ricerca in input cliccanto ricerca
-        effettuaRicerca(testoRicercato) {
-            console.log('Il componente padre ha ricevuto: ' + testoRicercato);
+        effettuaRicerca(testo) {
+            this.testoRicercato = testo;
+            console.log('Il componente padre ha ricevuto: ' + testo);
         },
 
         // creo una funzione
@@ -68,7 +81,8 @@ export default {
                 // errore
                 console.log(error);
             })
-        }
+        },
+
     },
     // chiama la funzione una volta creata azione
     created() {
